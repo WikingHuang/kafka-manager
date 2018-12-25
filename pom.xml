@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.eoi.pm</groupId>
+    <artifactId>kafka-manager-core</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>kafka-manager-core</name>
+    <description></description>
+
+    <properties>
+        <!--<java.version>1.8</java.version>-->
+        <scala.version>2.11.12</scala.version>
+        <scala.binary.version>2.11</scala.binary.version>
+        <!--<okhttp.version>3.11.0</okhttp.version>-->
+        <!--<okio.version>2.1.0</okio.version>-->
+        <!--<retrofit.version>2.4.0</retrofit.version>-->
+        <!--<converter-gson.version>2.5.0</converter-gson.version>-->
+        <!--<gson.version>2.8.5</gson.version>-->
+        <!--<swagger.version>2.9.2</swagger.version>-->
+        <!--<maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>-->
+        <!--<build.timestamp>${maven.build.timestamp}</build.timestamp>-->
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.11</artifactId>
+            <version>2.3.14</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-slf4j_2.11</artifactId>
+            <version>2.3.14</version>
+        </dependency>
+        <!--"com.typesafe.akka" %% "akka-actor" % "2.3.14",-->
+        <!--"com.typesafe.akka" %% "akka-slf4j" % "2.3.14",-->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>2.10.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>org.slf4j</artifactId>
+                    <groupId>slf4j-log4j12</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>2.10.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>org.slf4j</artifactId>
+                    <groupId>slf4j-log4j12</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--"org.apache.curator" % "curator-framework" % "2.10.0" exclude("log4j","log4j") exclude("org.slf4j", "slf4j-log4j12") force(),-->
+        <!--"org.apache.curator" % "curator-recipes" % "2.10.0" exclude("log4j","log4j") exclude("org.slf4j", "slf4j-log4j12") force(),-->
+        <dependency>
+            <groupId>org.json4s</groupId>
+            <artifactId>json4s-jackson_2.11</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json4s</groupId>
+            <artifactId>json4s-scalaz_2.11</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <!--"org.json4s" %% "json4s-jackson" % "3.4.0",-->
+        <!--"org.json4s" %% "json4s-scalaz" % "3.4.0",-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+        <!--"org.slf4j" % "log4j-over-slf4j" % "1.7.12",-->
+        <dependency>
+            <groupId>com.adrianhurt</groupId>
+            <artifactId>play-bootstrap3_2.11</artifactId>
+            <version>0.4.5-P24</version>
+        </dependency>
+        <!--"com.adrianhurt" %% "play-bootstrap3" % "0.4.5-P24",-->
+        <dependency>
+            <groupId>org.clapper</groupId>
+            <artifactId>grizzled-slf4j_2.11</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <!--"org.clapper" %% "grizzled-slf4j" % "1.0.2",-->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.11</artifactId>
+            <version>1.1.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>org.slf4j</artifactId>
+                    <groupId>slf4j-log4j12</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <!--"org.apache.kafka" %% "kafka" % "1.1.0" exclude("log4j","log4j") exclude("org.slf4j", "slf4j-log4j12") force(),-->
+        <!--"org.apache.kafka" % "kafka-streams" % "1.1.0",-->
+        <dependency>
+            <groupId>com.beachape</groupId>
+            <artifactId>enumeratum_2.11</artifactId>
+            <version>1.4.4</version>
+        </dependency>
+        <!--"com.beachape" %% "enumeratum" % "1.4.4",-->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        <!--"com.github.ben-manes.caffeine" % "caffeine" % "2.6.2",-->
+
+        <dependency>
+            <groupId>com.yammer.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <!--"com.yammer.metrics" % "metrics-core" % "2.2.0" force()-->
+
+        <!-- scala start -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-reflect</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-compiler</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <!-- scala end -->
+    </dependencies>
+
+    <!-- repository config -->
+    <repositories>
+        <repository>
+            <id>maven-central</id>
+            <name>eoi-group</name>
+            <url>http://192.168.31.230:18081/repository/eoi-group/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <updatePolicy>always</updatePolicy>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-net-cn</id>
+            <name>Maven China Mirror</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <build>
+        <sourceDirectory>app/</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://192.168.31.230:18081/repository/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://192.168.31.230:18081/repository/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
