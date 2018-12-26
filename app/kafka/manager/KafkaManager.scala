@@ -191,7 +191,12 @@ class KafkaManager(akkaConfig: Config) extends Logging {
         props.load(new java.io.FileInputStream(file))
         return Option(props)
       } else {
-        warn(s"Failed to find consumer properties file or file is not readable : $file")
+        val props = new Properties()
+        props.setProperty("security.protocol", "PLAINTEXT")
+        props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.ByteArrayDeserializer")
+        props.setProperty("value.deserializer", "org.apache.kafka.common.serialization.ByteArrayDeserializer")
+        return Option(props)
+//        warn(s"Failed to find consumer properties file or file is not readable : $file")
       }
     }
     None
@@ -203,14 +208,14 @@ class KafkaManager(akkaConfig: Config) extends Logging {
   {
     implicit val ec = apiExecutionContext
     system.actorSelection(kafkaManagerActor).ask(msg).map {
-      case err: ActorErrorResponse => 
+      case err: ActorErrorResponse =>
         error(s"Failed on input : $msg")
         -\/(ApiError.from(err))
       case o: Output =>
         Try {
           fn(o)
         } match {
-          case Failure(t) => 
+          case Failure(t) =>
             error(s"Failed on input : $msg")
             -\/(ApiError.fromThrowable(t))
           case Success(foutput) => \/-(foutput)
